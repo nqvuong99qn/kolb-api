@@ -3,6 +3,7 @@ package com.hcmut.kolb.api;
 import com.hcmut.kolb.entity.Brand;
 import com.hcmut.kolb.entity.ProductCategory;
 import com.hcmut.kolb.entity.ProductInfo;
+import com.hcmut.kolb.repository.BrandRepository;
 import com.hcmut.kolb.repository.ProductInfoRepository;
 import com.hcmut.kolb.service.CategoryService;
 import com.hcmut.kolb.service.ProductService;
@@ -17,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -32,12 +34,21 @@ public class BrandController {
     ProductInfoRepository productInfoRepository;
 
 
+    @Autowired
+    BrandRepository brandRepository;
+
+
 
     @GetMapping("/brand")
     public Page<Brand> findAll(@RequestParam(value = "page", defaultValue = "1") Integer page,
                                @RequestParam(value = "size", defaultValue = "3") Integer size) {
         PageRequest request = PageRequest.of(page - 1, size);
         return brandService.findAll(request);
+    }
+
+    @GetMapping("/brand1")
+    public List<Brand> findAll(){
+        return brandRepository.findAll();
     }
 
 //    @GetMapping("/brand/{brandId}")

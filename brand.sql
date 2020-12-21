@@ -1,0 +1,5 @@
+INSERT INTO public.brand (brand_id,brand_description,brand_name,create_time,logo,update_time,brand_address,brand_phone,email_seller) VALUES 
+('3','....','THE COLLECTORS',NULL,'https://localbrand.vn/wp-content/uploads/2020/07/101634388_3798517096890382_3140712204047745024_o-1280x1280.png',NULL,'HCM: 489/6 Huỳnh Văn Bánh','090900694',NULL)
+,('1','Được thành lập vào năm 2017, Goldie là thương hiệu thời trang đường phố lấy cảm hứng từ văn hoá đại chúng, nghệ thuật đương đại, điện ảnh, kiến trúc, youth subculture.','Goldie VietNam',NULL,'https://localbrand.vn/wp-content/uploads/2020/08/goldievietnam-logo-2.jpg',NULL,'The New Playground 90 Lê Lai, quận 1','039 333 2103','admin1@gmail.com')
+,('2','XXME là thương hiệu được thành lập dựa trên niềm đam mê thời trang streetwear, với mục đích lan toả phong cách, xu hướng thời trang tương lai đến giới trẻ Việt Nam. ','XXME',NULL,'https://localbrand.vn/wp-content/uploads/2020/07/20melogo-1280x1280.png',NULL,'HCM: 264 Tân Sơn Nhì','077 655 6840','admin2@gmail.com')
+;
