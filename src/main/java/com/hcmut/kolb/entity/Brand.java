@@ -36,6 +36,8 @@ public class Brand implements Serializable {
 
     private String logo;
 
+    private Integer point;
+
     @CreationTimestamp
     private Date createTime;
     @UpdateTimestamp

@@ -20,4 +20,6 @@ public interface ProductInfoRepository extends JpaRepository<ProductInfo, String
 
     List<ProductInfo> findAllByBrandIdOrderByProductIdAsc(String brandId);
 
+
+
 }

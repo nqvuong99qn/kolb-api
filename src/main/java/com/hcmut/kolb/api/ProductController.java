@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
@@ -50,6 +51,33 @@ public class ProductController {
 
         ProductInfo productInfo = productService.findOne(productId);
 
+        return new SucessResponse().put("meta", null).put("data", new SucessResponse().put(
+                "productInfor", productInfo) );
+    }
+
+
+    @GetMapping("/products/brand/{brandId}")
+    public SucessResponse showAllProductInBrand(@PathVariable("brandId") String brandId){
+        List<ProductInfo> products = new ArrayList<>();
+        products = productInfoRepository.findAllByBrandIdOrderByProductIdAsc(brandId);
+
+        return new SucessResponse().put("meta", null).put("data", new SucessResponse().put(
+                "products", products) );
+    }
+
+    @GetMapping("/seller/products/{brandId}")
+    public SucessResponse showAllProductInBrandForSeller(@PathVariable("brandId") String brandId){
+        List<ProductInfo> products = new ArrayList<>();
+        products = productInfoRepository.findAllByBrandIdOrderByProductIdAsc(brandId);
+
+        return new SucessResponse().put("meta", null).put("data", new SucessResponse().put(
+                "products", products) );
+    }
+
+    @GetMapping("seller/product/{productId}")
+    public SucessResponse showOneForSeller(@PathVariable("productId") String productId) {
+
+        ProductInfo productInfo = productService.findOne(productId);
         return new SucessResponse().put("meta", null).put("data", new SucessResponse().put(
                 "productInfor", productInfo) );
     }
