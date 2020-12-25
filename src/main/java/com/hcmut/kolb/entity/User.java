@@ -47,6 +47,7 @@ public class User implements Serializable {
     private String brandId;
 
 
+
     @Override
     public String toString() {
         return "User{" +
