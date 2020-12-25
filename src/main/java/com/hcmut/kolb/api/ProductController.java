@@ -1,6 +1,8 @@
 package com.hcmut.kolb.api;
 
+import com.hcmut.kolb.Response.SucessResponse;
 import com.hcmut.kolb.entity.ProductInfo;
+import com.hcmut.kolb.repository.ProductInfoRepository;
 import com.hcmut.kolb.service.CategoryService;
 import com.hcmut.kolb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -20,28 +23,35 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+    @Autowired
+    ProductInfoRepository productInfoRepository;
+
     /**
      * Show All Categories
      */
 
-    @GetMapping("/product")
-    public Page<ProductInfo> findAll(@RequestParam(value = "page", defaultValue = "1") Integer page,
-                                     @RequestParam(value = "size", defaultValue = "3") Integer size) {
-        PageRequest request = PageRequest.of(page - 1, size);
-        return productService.findAll(request);
+//    @GetMapping("/all-products")
+//    public Page<ProductInfo> findAllPaging(@RequestParam(value = "page", defaultValue = "1") Integer page,
+//                                     @RequestParam(value = "size", defaultValue = "3") Integer size) {
+//        PageRequest request = PageRequest.of(page - 1, size);
+//        return productService.findAll(request);
+//    }
+
+
+    @GetMapping("/products")
+    public SucessResponse findAll(){
+
+        return new SucessResponse().put("meta", null).
+                put("data", new SucessResponse().put("products", productInfoRepository.findAll()));
     }
 
     @GetMapping("/product/{productId}")
-    public ProductInfo showOne(@PathVariable("productId") String productId) {
+    public SucessResponse showOne(@PathVariable("productId") String productId) {
 
         ProductInfo productInfo = productService.findOne(productId);
 
-//        // Product is not available
-//        if (productInfo.getProductStatus().equals(ProductStatusEnum.DOWN.getCode())) {
-//            productInfo = null;
-//        }
-
-        return productInfo;
+        return new SucessResponse().put("meta", null).put("data", new SucessResponse().put(
+                "productInfor", productInfo) );
     }
 
     @PostMapping("/seller/product/new")

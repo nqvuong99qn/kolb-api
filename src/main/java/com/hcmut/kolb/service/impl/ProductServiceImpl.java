@@ -14,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -42,8 +44,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductInfo> findAllInCategory(Integer categoryType, Pageable pageable) {
-        return productInfoRepository.findAllByCategoryTypeOrderByProductIdAsc(categoryType, pageable);
+    public List<ProductInfo> findAllInCategory(Integer categoryType) {
+      //  return productInfoRepository.findAllByBrandIdOrderByProductIdAsc(categoryType);
+        return null;
     }
 
     @Override

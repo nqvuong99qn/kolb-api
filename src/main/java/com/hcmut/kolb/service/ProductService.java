@@ -5,6 +5,8 @@ import com.hcmut.kolb.entity.ProductInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface ProductService {
 
     ProductInfo findOne(String productId);
@@ -14,7 +16,7 @@ public interface ProductService {
     // All products
     Page<ProductInfo> findAll(Pageable pageable);
     // All products in a category
-    Page<ProductInfo> findAllInCategory(Integer categoryType, Pageable pageable);
+    List<ProductInfo> findAllInCategory(Integer categoryType);
 
     // increase stock
     void increaseStock(String productId, int amount);

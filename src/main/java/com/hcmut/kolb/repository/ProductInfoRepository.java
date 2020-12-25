@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 
 public interface ProductInfoRepository extends JpaRepository<ProductInfo, String> {
     ProductInfo findByProductId(String id);
@@ -16,6 +18,6 @@ public interface ProductInfoRepository extends JpaRepository<ProductInfo, String
 
     Page<ProductInfo> findAllByOrderByProductId(Pageable pageable);
 
-    Page<ProductInfo> findAllByBrandIdOrderByProductIdAsc(String brandId, Pageable pageable);
+    List<ProductInfo> findAllByBrandIdOrderByProductIdAsc(String brandId);
 
 }

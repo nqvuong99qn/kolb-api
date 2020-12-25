@@ -17,7 +17,7 @@ import java.util.Date;
 public class ProductCategory implements Serializable {
     @Id
     @GeneratedValue
-    private Integer categoryId;
+    private String categoryId;
 
     private String categoryName;
 
